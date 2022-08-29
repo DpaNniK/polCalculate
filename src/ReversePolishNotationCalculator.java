@@ -19,12 +19,16 @@ class ReversePolishNotationCalculator {
                 int operandOne = numbers.pop();
                 int operandTwo = numbers.pop();
 
-                if (parts[index].equals("+")) {
-                    numbers.push(operandOne + operandTwo);
-                } else if (parts[index].equals("-")) {
-                    numbers.push(operandTwo - operandOne);
-                } else if (parts[index].equals("*")) {
-                    numbers.push(operandOne * operandTwo);
+                switch (parts[index]) {
+                    case "+":
+                        numbers.push(operandOne + operandTwo);
+                        break;
+                    case "-":
+                        numbers.push(operandTwo - operandOne);
+                        break;
+                    case "*":
+                        numbers.push(operandOne * operandTwo);
+                        break;
                 }
 
             } else {
@@ -38,12 +42,8 @@ class ReversePolishNotationCalculator {
     }
 
     private boolean isOperation(String part) {
-        if (part.equals("+")
+        return part.equals("+")
                 || part.equals("-")
-                || part.equals("*")) {
-            return true;
-        }
-
-        return false;
+                || part.equals("*");
     }
 } 
